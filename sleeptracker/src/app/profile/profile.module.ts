@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { HomePage } from './home.page';
+import { ProfilePage } from './profile.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
 
 
@@ -15,8 +15,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule
+    ProfilePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [ProfilePage]
 })
-export class HomePageModule {}
+export class ProfilePageModule {}

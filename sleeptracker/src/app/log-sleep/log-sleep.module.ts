@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { HomePage } from './home.page';
+import { LogSleepPage } from './log-sleep.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { HomePageRoutingModule } from './home-routing.module';
+import { LogSleepPageRoutingModule } from './log-sleep-routing.module';
+
 
 
 
@@ -15,8 +16,8 @@ import { HomePageRoutingModule } from './home-routing.module';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule
+    LogSleepPageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [LogSleepPage]
 })
-export class HomePageModule {}
+export class LogSleepPageModule {}

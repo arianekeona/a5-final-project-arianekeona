@@ -1,20 +1,21 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Sleep Tracker 
+    <ion-title id="header-app-title">
+      <ion-icon name="cloudy-night" aria-hidden="true"></ion-icon>
+      Slumber Score 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Sleep Tracker</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div id="main-elements">
+      <h1 id="current-time">{{time}}</h1>
+      <div>
+        <ion-button (click)="goToLogSleepPage()">Log My Sleep</ion-button>
+      </div>
+      <div>
+        <ion-button>Log My Sleepiness</ion-button>
+      </div>
+    </div>
+  
 </ion-content>

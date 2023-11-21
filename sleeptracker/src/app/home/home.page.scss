@@ -1,5 +1,17 @@
-#container {
+#header-app-title {
   text-align: center;
+  font-family: 'Sora', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: #272642;
+}
+
+ion-content {
+  --background: #272642;
+}
+
+#main-elements {
+  text-align: center;
+  font-family: 'Sora', Arial, Helvetica, sans-serif;  
 
   position: absolute;
   left: 0;
@@ -8,20 +20,8 @@
   transform: translateY(-50%);
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+#main-elements div ion-button {
+  font-family: 'Sora', Arial, Helvetica, sans-serif;
+  --background: #7d7dcb;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
