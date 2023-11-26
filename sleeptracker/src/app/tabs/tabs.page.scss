@@ -1,4 +1,8 @@
-#bottom-bar ion-tabs ion-tab-bar ion-tab-button {
-    font-family: 'Sora', Arial, Helvetica, sans-serif;
-    color: #272642;
+ion-tab-button {
+  font-family: 'Sora', Arial, Helvetica, sans-serif;
+  color: #272642;
   }
+
+ion-tab-button:hover {
+  color: #7d7dcb;
+}

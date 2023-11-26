@@ -11,16 +11,16 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'log-sleep',
-    loadChildren: () => import('./log-sleep/log-sleep.module').then( m => m.LogSleepPageModule)
-  },
-  {
     path: 'logs',
     loadChildren: () => import('./logs/logs.module').then( m => m.LogsPageModule)
   },
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'log-sleep',
+    loadChildren: () => import('./log-sleep/log-sleep.module').then( m => m.LogSleepPageModule)
   },
   {
     path: '',

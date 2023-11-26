@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>log-sleep</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log My Sleep</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-list>
+            <ion-item slot="header" (click)="showStartPicker = !showStartPicker">
+              <ion-label>Start Time</ion-label>
+              <ion-note slot="end">{{ formattedStartValue }}</ion-note>
+            </ion-item>
+            <ion-datetime *ngIf="showStartPicker" 
+              #datetime 
+              presentation="time-date" showDefaultButtons="true" 
+              [value]="startDateValue" 
+              (ionChange)="startDateChanged(datetime.value)"
+              (ionCancel)="showStartPicker = false;">
+            </ion-datetime>
+            <ion-item (click)="showEndPicker = !showEndPicker">
+              <ion-label>End Time</ion-label>
+              <ion-note slot="end">{{ formattedEndValue }}</ion-note>
+            </ion-item>
+            <ion-datetime *ngIf="showEndPicker" 
+              #datetime 
+              presentation="time-date" showDefaultButtons="true" 
+              [value]="endDateValue" 
+              (ionChange)="endDateChanged(datetime.value)"
+              (ionCancel)="showEndPicker = false;">
+            </ion-datetime>
+      </ion-list>
+      <div>
+        <ion-button size="small" (click)="storeSleepData()">Confirm</ion-button>
+      </div>
+    </ion-card-content>
 
+  </ion-card>
 </ion-content>

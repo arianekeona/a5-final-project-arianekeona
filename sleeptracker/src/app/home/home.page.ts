@@ -10,7 +10,7 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  time = "";
+  currentTime = "";
 	
   constructor(public sleepService:SleepService) {
 	}
@@ -38,14 +38,10 @@ export class HomePage {
 
 		let am_or_pm = hour < 12 ? "AM" : "PM";
 
-		this.time = hour_time + ":" + minute + am_or_pm;
+		this.currentTime = hour_time + ":" + minute + am_or_pm;
 
-		let e = document.getElementById("current-time") as HTMLElement | null
+		let e = document.getElementById("current-time") as HTMLElement | null;
 		if (e !== null)
-			e.innerHTML = this.time;
-	}
-
-	goToLogSleepPage() {
-		console.log("hello");
+			e.innerHTML = this.currentTime;
 	}
 }

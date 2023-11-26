@@ -1,0 +1,41 @@
+ion-toolbar {
+    --background: #FFFFFF;
+}
+
+ion-title {
+    font-family: 'Sora', Arial, Helvetica, sans-serif;
+    --color: #272642;
+}
+
+ion-content {
+    font-family: 'Sora', Arial, Helvetica, sans-serif;  
+    --background: #272642;
+}
+
+ion-card {
+    --background: #FFFFFF;
+}
+
+ion-card-content ion-item {
+    --background: #FFFFFF;
+}
+
+ion-card-content ion-item ion-label {
+    font-family: 'Sora', Arial, Helvetica, sans-serif;
+    --color: #272642;
+}
+
+ion-card-content ion-item ion-note {
+    font-family: 'Sora', Arial, Helvetica, sans-serif;
+    --color: #272642;
+}
+
+ion-card-content div {
+    text-align: center;
+}
+
+ion-card-content div ion-button{
+    text-align: center;
+    font-family: 'Sora', Arial, Helvetica, sans-serif;
+    --background: #7d7dcb;
+}
