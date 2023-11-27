@@ -1,9 +1,43 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>logs</ion-title>
+    <ion-title id="header-app-title">
+      <ion-icon name="cloudy-night" aria-hidden="true"></ion-icon>
+      Slumber Score 
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-segment mode="ios" [(ngModel)]="dataValue" (ionChange)="changeSegment(dataValue)">
+      <ion-segment-button value="sleep">
+        <ion-label class="ion-text-wrap">Your Sleep</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sleepiness">
+        <ion-label class="ion-text-wrap">Your Sleepiness</ion-label>
+      </ion-segment-button>
+    </ion-segment>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div *ngIf="showSleepData" id="sleep_logs">
+    <ion-card *ngFor="let data of getSleepData">
+      <ion-card-header>
+        <ion-card-title>You slept for {{ data.summaryString() }}</ion-card-title>
+        <ion-card-subtitle>{{ data.displayTimeSlept() }}</ion-card-subtitle>
+      </ion-card-header>
 
+      <ion-card-content>You started sleeping at {{ data.displayLongSleepStart() }}. You woke up at {{ data.displayLongSleepEnd() }}.</ion-card-content>
+    </ion-card>
+  </div>
+  
+  <div *ngIf="showSleepinessData" id="sleepiness_logs">
+    <ion-card *ngFor="let data of getSleepinessData">
+      <ion-card-header>
+        <ion-card-title>You logged a level {{ data.displaySleepinessLevel() }}</ion-card-title>
+        <ion-card-subtitle>{{ data.displayTimeLogged() }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>Based on the Stanford Sleepiness Scale, you felt a sleepiness of level {{ data.summaryString() }}.</ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

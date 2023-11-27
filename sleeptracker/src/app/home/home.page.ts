@@ -16,7 +16,6 @@ export class HomePage {
 	}
 
 	ngOnInit() {
-		console.log(this.allSleepData);
 		document.addEventListener("DOMContentLoaded", this.updateTime);
 		setInterval(this.updateTime, 1000);
 	}

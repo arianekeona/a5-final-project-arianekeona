@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
+import { SleepService } from '../services/sleep.service';
 
 @Component({
   selector: 'app-log-sleep',
@@ -16,7 +17,7 @@ export class LogSleepPage implements OnInit {
   sleepData= new OvernightSleepData(new Date(), new Date());
   showSleepData = false;
   
-  constructor() { }
+  constructor(public sleepService:SleepService) { }
 
   ngOnInit() {
   }
@@ -48,6 +49,7 @@ export class LogSleepPage implements OnInit {
   storeSleepData() {
     if (this.startDateValue instanceof Date && this.endDateValue instanceof Date) {
       this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue);
+      this.sleepService.logOvernightData(this.sleepData);
       this.showSleepData = true;
     }
   }

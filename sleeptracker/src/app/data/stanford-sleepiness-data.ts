@@ -24,4 +24,13 @@ export class StanfordSleepinessData extends SleepData {
 	override summaryString():string {
 		return this.loggedValue + ": " + StanfordSleepinessData.ScaleValues[this.loggedValue];
 	}
+
+	displaySleepinessLevel():string {
+		return this.loggedValue + ".";
+	}
+
+	displayTimeLogged():string {
+		return "At " + this.loggedAt.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric' }) + ", " + this.loggedAt.toLocaleString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' });
+	}
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { SleepService } from '../services/sleep.service';
 
 @Component({
   selector: 'app-log-sleepiness',
@@ -14,7 +15,7 @@ export class LogSleepinessPage implements OnInit {
   sleepinessData = new StanfordSleepinessData(0, new Date());
   showSleepinessData = false;
 
-  constructor() { }
+  constructor(public sleepService:SleepService) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,7 @@ export class LogSleepinessPage implements OnInit {
   storeSleepinessData() {
     if (this.dateValue instanceof Date && this.sleepinessValue != 0) {
       this.sleepinessData = new StanfordSleepinessData(this.sleepinessValue, this.dateValue);
+      this.sleepService.logSleepinessData(this.sleepinessData);
       this.showSleepinessData = true;
     }
   }
