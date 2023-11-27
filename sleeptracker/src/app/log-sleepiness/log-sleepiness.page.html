@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Log My Sleepiness</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>How sleepy do you feel?</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-select [(ngModel)]="sleepinessValue" justify="space-between" label="On a scale of 1-7">
+            <ion-select-option value=1>1: Feeling active, vital, alert, or wide awake</ion-select-option>
+            <ion-select-option value=2>2: Functioning at high levels, but not at peak; able to concentrate</ion-select-option>
+            <ion-select-option value=3>3: Awake, but relaxed; responsive but not fully alert</ion-select-option>
+            <ion-select-option value=4>4: Somewhat foggy, let down</ion-select-option>
+            <ion-select-option value=5>5: Foggy; losing interest in remaining awake; slowed down</ion-select-option>
+            <ion-select-option value=6>6: Sleepy, woozy, fighting sleep; prefer to lie down</ion-select-option>
+            <ion-select-option value=7>7: No longer fighting sleep, sleep onset soon; having dream-like thoughts</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item (click)="showDatePicker = !showDatePicker">
+          <ion-label class="ion-text-wrap">Date & Time</ion-label>
+          <ion-note slot="end">{{ formattedDate }}</ion-note>
+        </ion-item>
+        <ion-datetime *ngIf="showDatePicker" 
+          #datetime 
+          presentation="time-date" showDefaultButtons="true" 
+          [value]="dateValue" 
+          (ionChange)="dateChanged(datetime.value)"
+          (ionCancel)="showDatePicker = false;">
+        </ion-datetime>
+      </ion-list>
+
+      <div>
+        <ion-button size="small" (click)="storeSleepinessData()">Confirm</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="showSleepinessData">
+    <ion-card-header>
+      <ion-card-title>Your sleepiness level was logged!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You logged a level {{sleepinessData.summaryString()}}.
+    </ion-card-content>
+  </ion-card>
+</ion-content>

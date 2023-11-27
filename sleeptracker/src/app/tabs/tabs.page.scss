@@ -1,8 +1,9 @@
 ion-tab-button {
   font-family: 'Sora', Arial, Helvetica, sans-serif;
-  color: #272642;
-  }
+  --color-focused: #7d7dcb;
+  --color-selected: #7d7dcb;
+}
 
 ion-tab-button:hover {
-  color: #7d7dcb;
+  --color: #7d7dcb;
 }

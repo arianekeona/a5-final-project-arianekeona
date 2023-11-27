@@ -15,13 +15,13 @@ const routes: Routes = [
     loadChildren: () => import('./logs/logs.module').then( m => m.LogsPageModule)
   },
   {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
     path: 'log-sleep',
     loadChildren: () => import('./log-sleep/log-sleep.module').then( m => m.LogSleepPageModule)
   },
+  {
+    path: 'log-sleepiness',
+    loadChildren: () => import('./log-sleepiness/log-sleepiness.module').then( m => m.LogSleepinessPageModule)
+  },   
   {
     path: '',
     redirectTo: 'home',

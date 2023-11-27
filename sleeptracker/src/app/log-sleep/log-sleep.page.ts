@@ -13,7 +13,8 @@ export class LogSleepPage implements OnInit {
   showEndPicker = false;
   endDateValue:any;
   formattedEndValue = "Select the time";
-  sleepData:OvernightSleepData | undefined;
+  sleepData= new OvernightSleepData(new Date(), new Date());
+  showSleepData = false;
   
   constructor() { }
 
@@ -45,6 +46,9 @@ export class LogSleepPage implements OnInit {
   }
 
   storeSleepData() {
-    this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue);
+    if (this.startDateValue instanceof Date && this.endDateValue instanceof Date) {
+      this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue);
+      this.showSleepData = true;
+    }
   }
 }

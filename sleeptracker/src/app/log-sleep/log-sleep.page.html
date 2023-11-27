@@ -38,6 +38,14 @@
         <ion-button size="small" (click)="storeSleepData()">Confirm</ion-button>
       </div>
     </ion-card-content>
+  </ion-card>
 
+  <ion-card *ngIf="showSleepData">
+    <ion-card-header>
+      <ion-card-title>Your sleep was logged!</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      You slept for {{sleepData.summaryString()}} on the {{sleepData.dateString()}}
+    </ion-card-content>
   </ion-card>
 </ion-content>
