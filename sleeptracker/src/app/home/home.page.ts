@@ -3,6 +3,7 @@ import { SleepService } from '../services/sleep.service';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -10,9 +11,9 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  currentTime = "";
+  currentTime = "0:00AM";
 	
-  constructor(public sleepService:SleepService) {
+  constructor(public sleepService:SleepService, private navCtrl:NavController) {
 	}
 
 	ngOnInit() {
@@ -42,5 +43,13 @@ export class HomePage {
 		let e = document.getElementById("current-time") as HTMLElement | null;
 		if (e !== null)
 			e.innerHTML = this.currentTime;
+	}
+
+	navLogSleep() {
+		this.navCtrl.navigateForward('/log-sleep');
+	}
+
+	navLogSleepiness() {
+		this.navCtrl.navigateForward('/log-sleepiness');
 	}
 }

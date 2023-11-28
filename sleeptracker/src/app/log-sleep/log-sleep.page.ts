@@ -16,6 +16,7 @@ export class LogSleepPage implements OnInit {
   formattedEndValue = "Select the time";
   sleepData= new OvernightSleepData(new Date(), new Date());
   showSleepData = false;
+  showNewSleep = false;
   
   constructor(public sleepService:SleepService) { }
 
@@ -51,6 +52,14 @@ export class LogSleepPage implements OnInit {
       this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue);
       this.sleepService.logOvernightData(this.sleepData);
       this.showSleepData = true;
+      this.showNewSleep = true;
     }
+  }
+
+  restartLogSleep() {
+    this.showSleepData = false;
+    this.showNewSleep = false;
+    this.formattedStartValue = "Select the time";
+    this.formattedEndValue = "Select the time";
   }
 }
