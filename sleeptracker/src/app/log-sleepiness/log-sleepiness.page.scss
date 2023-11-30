@@ -30,8 +30,12 @@ ion-card-content div {
     text-align: center;
 }
 
-ion-card-content div ion-button{
+ion-button{
     text-align: center;
     font-family: 'Sora', Arial, Helvetica, sans-serif;
     --background: #7d7dcb;
+}
+
+#new_sleepiness {
+    text-align: center;
 }

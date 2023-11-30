@@ -18,7 +18,17 @@ export class OvernightSleepData extends SleepData {
 		var difference_ms = sleepEnd_ms - sleepStart_ms;
 		    
 		// Convert to hours and minutes
-		return Math.floor(difference_ms / (1000*60*60)) + " hours, " + Math.floor(difference_ms / (1000*60) % 60) + " minutes.";
+		var hours = Math.floor(difference_ms / (1000*60*60));
+		var minutes = Math.floor(difference_ms / (1000*60) % 60);
+
+		if (minutes > 1) {
+			return hours + " hours, " + minutes + " minutes";
+		} else if (minutes == 1) {
+			return hours + " hours, " + minutes + " minute";
+		} else {
+			return hours + " hours, " + minutes + " minutes";
+		}
+		
 	}
 
 	override dateString():string {

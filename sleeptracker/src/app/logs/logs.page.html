@@ -22,22 +22,22 @@
   <div *ngIf="showSleepData" id="sleep_logs">
     <ion-card *ngFor="let data of getSleepData">
       <ion-card-header>
-        <ion-card-title>You slept for {{ data.summaryString() }}</ion-card-title>
-        <ion-card-subtitle>{{ data.displayTimeSlept() }}</ion-card-subtitle>
+        <ion-card-title>You slept for {{ getSleepSummaryString(data) }}.</ion-card-title>
+        <ion-card-subtitle>{{ getTimeSlept(data) }}</ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content>You started sleeping at {{ data.displayLongSleepStart() }}. You woke up at {{ data.displayLongSleepEnd() }}.</ion-card-content>
+      <ion-card-content>You started sleeping at {{ getLongSleepStart(data) }}, and you woke up at {{ getLongSleepEnd(data) }}.</ion-card-content>
     </ion-card>
   </div>
   
   <div *ngIf="showSleepinessData" id="sleepiness_logs">
     <ion-card *ngFor="let data of getSleepinessData">
       <ion-card-header>
-        <ion-card-title>You logged a level {{ data.displaySleepinessLevel() }}</ion-card-title>
-        <ion-card-subtitle>{{ data.displayTimeLogged() }}</ion-card-subtitle>
+        <ion-card-title>You logged a level {{ getSleepinessLevel(data) }}</ion-card-title>
+        <ion-card-subtitle>{{ getTimeLogged(data) }}</ion-card-subtitle>
       </ion-card-header>
 
-      <ion-card-content>Based on the Stanford Sleepiness Scale, you felt a sleepiness of level {{ data.summaryString() }}.</ion-card-content>
+      <ion-card-content>Based on the Stanford Sleepiness Scale, you felt a sleepiness of level {{ getSleepinessSummaryString(data) }}.</ion-card-content>
     </ion-card>
   </div>
 </ion-content>
