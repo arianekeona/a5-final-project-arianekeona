@@ -5,14 +5,14 @@ import { SleepService } from '../services/sleep.service';
 import { AppStorageService } from '../services/app-storage.service';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
-import { AnalyticsPage } from '../analytics/analytics.page';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: './tabs.page.html',
-  styleUrls: ['./tabs.page.scss'],
+  selector: 'app-analytics',
+  templateUrl: './analytics.page.html',
+  styleUrls: ['./analytics.page.scss'],
+  providers: [LogSleepPage, LogSleepinessPage]
 })
-export class TabsPage implements OnInit {
+export class AnalyticsPage implements OnInit {
   public static ScaleValues = [undefined,//Sleepiness scale starts at 1
 	'Feeling active, vital, alert, or wide awake', //1
 	'Functioning at high levels, but not at peak; able to concentrate', //2
@@ -21,15 +21,18 @@ export class TabsPage implements OnInit {
 	'Foggy; losing interest in remaining awake; slowed down', //5
 	'Sleepy, woozy, fighting sleep; prefer to lie down', //6
 	'No longer fighting sleep, sleep onset soon; having dream-like thoughts']; //7
+  
+  public static avgHours = 0;
+  public static avgMinutes = 0;
+  public static avgSleepinessLvl = 0;
+  public static formattedSleepinessLvl = "";
 
-  constructor(public sleepService:SleepService, public appStorageService:AppStorageService) { }
-
-  ngOnInit() {
-  }
-
-  getAnalytics() {
+  constructor(public sleepService:SleepService, public appStorageService:AppStorageService) { 
     this.getSleepKeys();
     this.getSleepinessKeys();
+  }
+
+  ngOnInit() {
   }
 
   async getValue(key:string){
@@ -88,5 +91,17 @@ export class TabsPage implements OnInit {
     }
     AnalyticsPage.avgSleepinessLvl = Math.round(AnalyticsPage.avgSleepinessLvl / sleepinessData.length);
     AnalyticsPage.formattedSleepinessLvl = AnalyticsPage.avgSleepinessLvl + ": " + StanfordSleepinessData.ScaleValues[AnalyticsPage.avgSleepinessLvl];
+  }
+
+  get getAvgHours() {
+    return AnalyticsPage.avgHours;
+  }
+
+  get getAvgMinutes() {
+    return AnalyticsPage.avgMinutes;
+  }
+
+  get getFmtedSleepinessLvl() {
+    return AnalyticsPage.formattedSleepinessLvl;
   }
 }

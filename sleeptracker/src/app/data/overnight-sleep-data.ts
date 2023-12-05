@@ -4,6 +4,9 @@ export class OvernightSleepData extends SleepData {
 	private sleepStart:Date;
 	private sleepEnd:Date;
 
+	hours = 0;
+	minutes = 0; 
+
 	constructor(sleepStart:Date, sleepEnd:Date) {
 		super();
 		this.sleepStart = sleepStart;
@@ -11,6 +14,8 @@ export class OvernightSleepData extends SleepData {
 	}
 
 	override summaryString():string {
+		this.hours = 0;
+		this.minutes = 0; 
 		var sleepStart_ms = this.sleepStart.getTime();
 		var sleepEnd_ms = this.sleepEnd.getTime();
 
@@ -18,15 +23,15 @@ export class OvernightSleepData extends SleepData {
 		var difference_ms = sleepEnd_ms - sleepStart_ms;
 		    
 		// Convert to hours and minutes
-		var hours = Math.floor(difference_ms / (1000*60*60));
-		var minutes = Math.floor(difference_ms / (1000*60) % 60);
+		this.hours = Math.floor(difference_ms / (1000*60*60));
+		this.minutes = Math.floor(difference_ms / (1000*60) % 60);
 
-		if (minutes > 1) {
-			return hours + " hours, " + minutes + " minutes";
-		} else if (minutes == 1) {
-			return hours + " hours, " + minutes + " minute";
+		if (this.minutes > 1) {
+			return this.hours + " hours, " + this.minutes + " minutes";
+		} else if (this.minutes == 1) {
+			return this.hours + " hours, " + this.minutes + " minute";
 		} else {
-			return hours + " hours, " + minutes + " minutes";
+			return this.hours + " hours, " + this.minutes + " minutes";
 		}
 		
 	}

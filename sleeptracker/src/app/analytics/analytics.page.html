@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title id="header-app-title">
+      <ion-icon name="cloudy-night" aria-hidden="true"></ion-icon>
+      Slumber Score 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card onload="getSleepKeys()">
+    <ion-card-header>
+      <ion-card-title>Average Sleep</ion-card-title>
+      <ion-card-subtitle>Here is your average sleep based on your logged sleep entries.</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>Your average sleep duration is: {{getAvgHours}} hours, {{getAvgMinutes}} minutes.</ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Average Sleepiness</ion-card-title>
+      <ion-card-subtitle>Here is your average sleepiness level based on your logged sleepiness entries.</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>Your average sleepiness level is: {{getFmtedSleepinessLvl}}.</ion-card-content>
+  </ion-card>
+</ion-content>

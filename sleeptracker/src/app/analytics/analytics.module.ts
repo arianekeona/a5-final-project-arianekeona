@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { LogsPage } from './logs.page';
+import { AnalyticsPage } from './analytics.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { LogsPageRoutingModule } from './logs-routing.module';
+import { AnalyticsPageRoutingModule } from './analytics-routing.module';
 
 
 
@@ -15,8 +15,8 @@ import { LogsPageRoutingModule } from './logs-routing.module';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    LogsPageRoutingModule
+    AnalyticsPageRoutingModule
   ],
-  declarations: [LogsPage]
+  declarations: [AnalyticsPage]
 })
-export class LogsPageModule {}
+export class AnalyticsPageModule {}
