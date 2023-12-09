@@ -3,7 +3,9 @@ import { SleepService } from '../services/sleep.service';
 import { SleepData } from '../data/sleep-data';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import * as handTrack from 'handtrackjs';
 import { NavController } from '@ionic/angular';
+import { PredictionEvent } from '../prediction-event';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,8 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  currentTime = "0:00AM";
+	gesture: String = "";
+	currentTime = "0:00AM";
 	
   constructor(public sleepService:SleepService, private navCtrl:NavController) {
 	}
@@ -52,4 +55,14 @@ export class HomePage {
 	navLogSleepiness() {
 		this.navCtrl.navigateForward('/log-sleepiness');
 	}
+
+	prediction(event: PredictionEvent){
+		this.gesture = event.getPrediction();
+		if (this.gesture == 'Open Hand') {
+			this.navLogSleep();
+		} else if (this.gesture == 'Closed Hand') {
+			this.navLogSleepiness();
+		}
+	  }
+
 }

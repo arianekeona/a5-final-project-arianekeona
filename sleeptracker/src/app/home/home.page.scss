@@ -27,5 +27,10 @@ ion-content {
 #main-elements div ion-button {
   font-family: 'Sora', Arial, Helvetica, sans-serif;
   --background: #7d7dcb;
+  max-width: 200px;
+}
+
+#gesture_text {
+  color: #ffffff;
 }
 

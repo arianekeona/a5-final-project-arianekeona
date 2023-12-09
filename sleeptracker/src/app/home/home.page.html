@@ -10,12 +10,19 @@
 <ion-content [fullscreen]="true">
     <div id="main-elements">
       <h1 id="current-time">{{currentTime}}</h1>
+
       <div>
-        <ion-button (click)="navLogSleep()">Log My Sleep</ion-button>
+        <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
+  
+        <div id="gesture_text">Gesture: {{gesture}}</div>
+      </div>
+
+      <div>
+        <ion-button class="ion-text-wrap" (click)="navLogSleep()">Log My Sleep (Open Hand)</ion-button>
       </div>
       <div>
-        <ion-button (click)="navLogSleepiness()">Log My Sleepiness</ion-button>
+        <ion-button class="ion-text-wrap" (click)="navLogSleepiness()">Log My Sleepiness (Closed Hand)</ion-button>
       </div>
     </div>
-  
+
 </ion-content>

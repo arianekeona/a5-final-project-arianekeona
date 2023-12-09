@@ -4,6 +4,8 @@ import { IonicModule } from '@ionic/angular';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { HomePage } from './home.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HandtrackerComponent } from '../handtracker/handtracker.component';
 
 describe('HomePage', () => {
   let component: HomePage;
@@ -11,8 +13,9 @@ describe('HomePage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot(), ExploreContainerComponentModule]
+      declarations: [HomePage, HandtrackerComponent],
+      imports: [IonicModule.forRoot(), ExploreContainerComponentModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
