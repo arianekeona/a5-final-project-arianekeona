@@ -3,6 +3,7 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import { SleepService } from '../services/sleep.service';
 import { NavController } from '@ionic/angular';
 import { AppStorageService } from '../services/app-storage.service';
+import { PredictionEvent } from '../prediction-event';
 
 
 @Component({
@@ -24,6 +25,9 @@ export class LogSleepinessPage implements OnInit {
   keyValue = "";
   public static allSleepinessData:any[];
 
+  gesture: String = "";
+  isDataStored = false;
+
   constructor(public sleepService:SleepService, private navCtrl:NavController, public appStorageService:AppStorageService) { }
 
   ngOnInit() {
@@ -42,7 +46,7 @@ export class LogSleepinessPage implements OnInit {
   }
 
   storeSleepinessData() {
-    if (this.dateValue instanceof Date && this.sleepinessValue != 0) {
+    if (this.dateValue instanceof Date && this.sleepinessValue != 0 && this.isDataStored == false) {
       this.sleepinessData = new StanfordSleepinessData(this.sleepinessValue, this.dateValue); //Value stored in storage
       this.keyValue = "sleepiness-" + this.sleepinessData.id; //Key stored in storage
       this.setValue(this.keyValue, this.sleepinessData);
@@ -51,6 +55,7 @@ export class LogSleepinessPage implements OnInit {
       this.showSleepinessData = true;
       this.showNewSleepiness = true;
       this.getSleepinessKeys();
+      this.isDataStored = true;
     }
   }
 
@@ -60,6 +65,7 @@ export class LogSleepinessPage implements OnInit {
     this.sleepinessValue = 0;
     this.dateValue = new Date();
     this.formattedDate = "MM/DD/YYYY, HH:MM";
+    this.isDataStored = false;
     this.navCtrl.navigateForward('/log-sleepiness');
   }
 
@@ -84,4 +90,11 @@ export class LogSleepinessPage implements OnInit {
     LogSleepinessPage.allSleepinessData = await Promise.all(promises!);
     return sleepKeys;
   }
+
+  prediction(event: PredictionEvent){
+		this.gesture = event.getPrediction();
+    if (this.gesture == "Two Closed Hands") {
+      this.storeSleepinessData();
+    }
+	}
 }

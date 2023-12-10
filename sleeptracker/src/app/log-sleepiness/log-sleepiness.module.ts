@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { LogSleepinessPageRoutingModule } from './log-sleepiness-routing.module';
 
 import { LogSleepinessPage } from './log-sleepiness.page';
+import { HandtrackerModule } from '../handtracker/handtracker.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LogSleepinessPageRoutingModule
+    LogSleepinessPageRoutingModule,
+    HandtrackerModule
   ],
   declarations: [LogSleepinessPage]
 })

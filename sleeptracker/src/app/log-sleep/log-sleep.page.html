@@ -35,10 +35,16 @@
             </ion-datetime>
       </ion-list>
       <div>
-        <ion-button size="small" (click)="storeSleepData()">Confirm</ion-button>
+        <ion-button size="small" (click)="storeSleepData()">Confirm (Two Open Hands)</ion-button>
       </div>
     </ion-card-content>
   </ion-card>
+
+  <div id="handtracker_element">
+    <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
+
+    <div id="gesture_text">Gesture: {{gesture}}</div>
+  </div>
 
   <ion-card *ngIf="showSleepData">
     <ion-card-header>

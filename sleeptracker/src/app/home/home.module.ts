@@ -6,7 +6,7 @@ import { HomePage } from './home.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { HomePageRoutingModule } from './home-routing.module';
-import { HandtrackerComponent } from '../handtracker/handtracker.component';
+import { HandtrackerModule } from '../handtracker/handtracker.module';
 
 
 
@@ -16,8 +16,9 @@ import { HandtrackerComponent } from '../handtracker/handtracker.component';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    HandtrackerModule
   ],
-    declarations: [HomePage, HandtrackerComponent]
+    declarations: [HomePage]
 })
 export class HomePageModule {}

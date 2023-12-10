@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import * as handTrack from 'handtrackjs';
 import { PredictionEvent } from '../prediction-event';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-handtracker',
@@ -115,6 +116,10 @@ export class HandtrackerComponent implements OnInit {
                 this.detectedGesture = "None";
 
             this.onPrediction.emit(new PredictionEvent(this.detectedGesture))
+
+            if (HomePage.movedToLogSleep == true) {
+              this.stopDetection();
+            }
         }, (err: any) => {
             console.log("ERROR")
             console.log(err)

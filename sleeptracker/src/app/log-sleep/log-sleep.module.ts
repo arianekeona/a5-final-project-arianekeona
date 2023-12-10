@@ -6,6 +6,7 @@ import { LogSleepPage } from './log-sleep.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { LogSleepPageRoutingModule } from './log-sleep-routing.module';
+import { HandtrackerModule } from '../handtracker/handtracker.module';
 
 
 
@@ -16,7 +17,8 @@ import { LogSleepPageRoutingModule } from './log-sleep-routing.module';
     FormsModule,
     IonicModule,
     ExploreContainerComponentModule,
-    LogSleepPageRoutingModule
+    LogSleepPageRoutingModule,
+    HandtrackerModule
   ],
   declarations: [LogSleepPage]
 })

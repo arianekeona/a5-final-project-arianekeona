@@ -3,6 +3,8 @@ import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { SleepService } from '../services/sleep.service';
 import { NavController } from '@ionic/angular';
 import { AppStorageService } from '../services/app-storage.service';
+import { PredictionEvent } from '../prediction-event';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-log-sleep',
@@ -25,10 +27,14 @@ export class LogSleepPage implements OnInit {
 
   keyValue = "";
   public static allSleepData:any[];
+
+  gesture: String = "";
+  isDataStored = false;
   
   constructor(public sleepService:SleepService, private navCtrl:NavController, public appStorageService:AppStorageService) { }
 
   ngOnInit() {
+    HomePage.movedToLogSleep = false;
   }
 
   startDateChanged(value:any) {
@@ -55,8 +61,12 @@ export class LogSleepPage implements OnInit {
     this.showEndPicker = false;
   }
 
+  get getSleepData() {
+    return LogSleepPage.allSleepData;
+  }
+
   async storeSleepData() {
-    if (this.startDateValue instanceof Date && this.endDateValue instanceof Date) {
+    if (this.startDateValue instanceof Date && this.endDateValue instanceof Date && this.isDataStored == false) {
       this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue); //Value to be stored in storage
       this.keyValue = "sleep-" + this.sleepData.id; //Key to be stored in storage
       this.setValue(this.keyValue, this.sleepData);
@@ -65,6 +75,7 @@ export class LogSleepPage implements OnInit {
       this.showSleepData = true;
       this.showNewSleep = true;
       this.getSleepKeys();
+      this.isDataStored = true;
     }
   }
 
@@ -75,6 +86,7 @@ export class LogSleepPage implements OnInit {
     this.endDateValue = new Date();
     this.formattedStartValue = "Select the time";
     this.formattedEndValue = "Select the time";
+    this.isDataStored = false;
     this.navCtrl.navigateForward('/log-sleep');
   }
 
@@ -99,5 +111,12 @@ export class LogSleepPage implements OnInit {
     LogSleepPage.allSleepData = await Promise.all(promises!);
     return sleepKeys;
   }
+
+  prediction(event: PredictionEvent){
+		this.gesture = event.getPrediction();
+    if (this.gesture == "Two Open Hands") {
+      this.storeSleepData();
+    }
+	}
     
 }

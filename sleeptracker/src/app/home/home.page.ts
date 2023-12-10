@@ -15,6 +15,8 @@ import { PredictionEvent } from '../prediction-event';
 export class HomePage {
 	gesture: String = "";
 	currentTime = "0:00AM";
+
+	public static movedToLogSleep = false;
 	
   constructor(public sleepService:SleepService, private navCtrl:NavController) {
 	}
@@ -59,6 +61,7 @@ export class HomePage {
 	prediction(event: PredictionEvent){
 		this.gesture = event.getPrediction();
 		if (this.gesture == 'Open Hand') {
+			HomePage.movedToLogSleep = true;
 			this.navLogSleep();
 		} else if (this.gesture == 'Closed Hand') {
 			this.navLogSleepiness();
