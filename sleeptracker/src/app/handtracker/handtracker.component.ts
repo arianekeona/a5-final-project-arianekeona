@@ -117,7 +117,7 @@ export class HandtrackerComponent implements OnInit {
 
             this.onPrediction.emit(new PredictionEvent(this.detectedGesture))
 
-            if (HomePage.movedToLogSleep == true) {
+            if (HomePage.movedToLogSleep == true || HomePage.movedToLogSleepiness == true) {
               this.stopDetection();
             }
         }, (err: any) => {

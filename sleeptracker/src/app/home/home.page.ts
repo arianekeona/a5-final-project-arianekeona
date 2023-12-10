@@ -17,6 +17,7 @@ export class HomePage {
 	currentTime = "0:00AM";
 
 	public static movedToLogSleep = false;
+	public static movedToLogSleepiness = false;
 	
   constructor(public sleepService:SleepService, private navCtrl:NavController) {
 	}
@@ -64,6 +65,7 @@ export class HomePage {
 			HomePage.movedToLogSleep = true;
 			this.navLogSleep();
 		} else if (this.gesture == 'Closed Hand') {
+			HomePage.movedToLogSleepiness = true;
 			this.navLogSleepiness();
 		}
 	  }

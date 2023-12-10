@@ -116,6 +116,8 @@ export class LogSleepPage implements OnInit {
 		this.gesture = event.getPrediction();
     if (this.gesture == "Two Open Hands") {
       this.storeSleepData();
+    } else if (this.gesture == "Hand Pointing") {
+      this.restartLogSleep();
     }
 	}
     

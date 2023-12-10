@@ -4,6 +4,7 @@ import { SleepService } from '../services/sleep.service';
 import { NavController } from '@ionic/angular';
 import { AppStorageService } from '../services/app-storage.service';
 import { PredictionEvent } from '../prediction-event';
+import { HomePage } from '../home/home.page';
 
 
 @Component({
@@ -31,6 +32,7 @@ export class LogSleepinessPage implements OnInit {
   constructor(public sleepService:SleepService, private navCtrl:NavController, public appStorageService:AppStorageService) { }
 
   ngOnInit() {
+    HomePage.movedToLogSleepiness = false;
   }
 
   dateChanged(value:any) {
