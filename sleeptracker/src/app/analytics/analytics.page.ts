@@ -5,6 +5,7 @@ import { SleepService } from '../services/sleep.service';
 import { AppStorageService } from '../services/app-storage.service';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-analytics',
@@ -33,6 +34,7 @@ export class AnalyticsPage implements OnInit {
   }
 
   ngOnInit() {
+    HomePage.movedToAnalytics = false;
   }
 
   async getValue(key:string){
