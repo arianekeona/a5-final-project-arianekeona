@@ -35,6 +35,7 @@ export class LogSleepinessPage implements OnInit {
     HomePage.movedToLogSleepiness = false;
   }
 
+  //Sets date of sleepiness log.
   dateChanged(value:any) {
     this.dateValue = new Date(value);
     this.formattedDate = this.dateValue.toLocaleString('en-US', {
@@ -47,6 +48,7 @@ export class LogSleepinessPage implements OnInit {
     this.showDatePicker = false;
   }
 
+  //Stores sleepiness data in storage.
   storeSleepinessData() {
     if (this.dateValue instanceof Date && this.sleepinessValue != 0 && this.isDataStored == false) {
       this.sleepinessData = new StanfordSleepinessData(this.sleepinessValue, this.dateValue); //Value stored in storage
@@ -61,6 +63,7 @@ export class LogSleepinessPage implements OnInit {
     }
   }
 
+  //Prepares page to log new sleepiness data.
   restartLogSleepiness() {
     this.showSleepinessData = false;
     this.showNewSleepiness = false;
@@ -93,6 +96,7 @@ export class LogSleepinessPage implements OnInit {
     return sleepKeys;
   }
 
+  //Hand tracking prediction to confirm a sleepiness log and make a new one.
   prediction(event: PredictionEvent){
 		this.gesture = event.getPrediction();
     if (this.gesture == "Two Closed Hands") {

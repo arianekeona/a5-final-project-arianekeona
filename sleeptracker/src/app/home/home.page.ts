@@ -38,6 +38,7 @@ export class HomePage {
 		return SleepService.AllSleepData;
 	}
 
+	//Clock feature on home page.
 	updateTime() {
 		let today = new Date();
 		let hours = today.getHours();
@@ -65,16 +66,19 @@ export class HomePage {
 		this.navCtrl.navigateForward('/log-sleepiness');
 	}
 
+	//Switching hand tracking mode to navigating to a page.
 	switchToPage() {
 		this.navToPage = true;
 		this.logData = false;
 	}
 
+	//Switching hand tracking mode to logging data.
 	switchToData() {
 		this.navToPage = false;
 		this.logData = true;
 	}
 
+	//Hand tracking prediction for navigating to a new page.
 	navToPagePrediction(event: PredictionEvent) {
 		this.gesture = event.getPrediction();
 		if (this.gesture == 'One Open Hand and One Closed Hand') {
@@ -86,6 +90,7 @@ export class HomePage {
 		}
 	}
 
+	//Hand tracking prediction for logging data.
 	sleepDataPrediction(event: PredictionEvent){
 		this.gesture = event.getPrediction();
 		if (this.gesture == 'Open Hand') {

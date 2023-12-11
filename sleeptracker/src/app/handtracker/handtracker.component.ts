@@ -112,8 +112,10 @@ export class HandtrackerComponent implements OnInit {
             if (pinching > 1) this.detectedGesture = "Two Hands Pinching";
             else if(pinching == 1) this.detectedGesture = "Hand Pinching";
 
+            //Custom gesture: mix of open and closed hand.
             if (openhands == 1 && closedhands == 1) this.detectedGesture = "One Open Hand and One Closed Hand";
 
+            //Custom gesture: mix of open and pointing hand.
             if (openhands == 1 && pointing == 1) this.detectedGesture = "One Open Hand and One Pointing Hand";
 
             if (openhands == 0 && closedhands == 0 && pointing == 0 && pinching == 0)
@@ -121,6 +123,7 @@ export class HandtrackerComponent implements OnInit {
 
             this.onPrediction.emit(new PredictionEvent(this.detectedGesture))
 
+            //Automatically stops video detection when moved to a new page.
             if (HomePage.movedToLogSleep || HomePage.movedToLogSleepiness || HomePage.movedToLogs || HomePage.movedToAnalytics) {
               this.stopDetection();
             }

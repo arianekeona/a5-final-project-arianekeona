@@ -62,6 +62,7 @@ export class LogsPage implements OnInit {
     return sleepKeys;
   }
 
+  //Sort sleep data by logged date.
   sortSleepData(arr:any[]) {
     arr.sort(function(a, b){return b.loggedAt - a.loggedAt});
   }

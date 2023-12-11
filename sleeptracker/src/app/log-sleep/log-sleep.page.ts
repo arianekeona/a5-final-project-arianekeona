@@ -37,6 +37,7 @@ export class LogSleepPage implements OnInit {
     HomePage.movedToLogSleep = false;
   }
 
+  //Sets start date.
   startDateChanged(value:any) {
     this.startDateValue = new Date(value);
     this.formattedStartValue = this.startDateValue.toLocaleString('en-US', {
@@ -49,6 +50,7 @@ export class LogSleepPage implements OnInit {
     this.showStartPicker = false;
   }
 
+  //Sets end date.
   endDateChanged(value:any) {
     this.endDateValue = new Date(value);
     this.formattedEndValue = this.endDateValue.toLocaleString('en-US', {
@@ -65,13 +67,14 @@ export class LogSleepPage implements OnInit {
     return LogSleepPage.allSleepData;
   }
 
+  //Stores sleep data in storage.
   async storeSleepData() {
     if (this.startDateValue instanceof Date && this.endDateValue instanceof Date && this.isDataStored == false) {
       this.sleepData = new OvernightSleepData(this.startDateValue, this.endDateValue); //Value to be stored in storage
       this.keyValue = "sleep-" + this.sleepData.id; //Key to be stored in storage
       this.setValue(this.keyValue, this.sleepData);
 
-      this.sleepService.logOvernightData(this.sleepData); //
+      this.sleepService.logOvernightData(this.sleepData);
       this.showSleepData = true;
       this.showNewSleep = true;
       this.getSleepKeys();
@@ -79,6 +82,7 @@ export class LogSleepPage implements OnInit {
     }
   }
 
+  //Prepares page to log new sleep data.
   restartLogSleep() {
     this.showSleepData = false;
     this.showNewSleep = false;
@@ -112,6 +116,7 @@ export class LogSleepPage implements OnInit {
     return sleepKeys;
   }
 
+  //Hand tracking prediction to confirm a sleep log and make a new one.
   prediction(event: PredictionEvent){
 		this.gesture = event.getPrediction();
     if (this.gesture == "Two Open Hands") {
