@@ -1,4 +1,4 @@
---Readme document for Ariane Keona Ochoa, akochoa@uci.edu*, 53182400--
+--Readme document for Ariane Keona Ochoa, akochoa@uci.edu, 53182400--
 
 1. How many assignment points do you believe you completed (replace the *'s with your numbers)?
 
