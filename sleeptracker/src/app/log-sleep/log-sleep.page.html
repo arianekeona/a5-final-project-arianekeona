@@ -35,16 +35,10 @@
             </ion-datetime>
       </ion-list>
       <div>
-        <ion-button size="small" (click)="storeSleepData()">Confirm (Two Open Hands)</ion-button>
+        <ion-button size="small" (click)="storeSleepData()">Confirm</ion-button>
       </div>
     </ion-card-content>
   </ion-card>
-
-  <div id="handtracker_element">
-    <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
-
-    <div id="gesture_text">Gesture: {{gesture}}</div>
-  </div>
 
   <ion-card *ngIf="showSleepData">
     <ion-card-header>
@@ -57,8 +51,24 @@
   <div *ngIf="showNewSleep" id="new_sleep">
     <ion-button (click)="restartLogSleep()">
       <ion-icon slot="start" name="add-circle-outline"></ion-icon>
-      Log new sleep (Hand Pointing)
+      Log new sleep
     </ion-button>
   </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Log My Sleep</ion-card-title>
+      <ion-card-subtitle>CONFIRM: Two Open Hands<br>
+        *LOG NEW SLEEP <i>(only after logging data)</i>: Hand Pointing 
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="handtracker_element">
+        <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
+    
+        <div id="gesture_text">Gesture: {{gesture}}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

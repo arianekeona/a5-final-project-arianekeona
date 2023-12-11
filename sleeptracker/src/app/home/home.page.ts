@@ -6,6 +6,7 @@ import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
 import * as handTrack from 'handtrackjs';
 import { NavController } from '@ionic/angular';
 import { PredictionEvent } from '../prediction-event';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,13 @@ export class HomePage {
 
 	public static movedToLogSleep = false;
 	public static movedToLogSleepiness = false;
+	public static movedToLogs = false;
+	public static movedToAnalytics = false;
+
+	navToPage = false;
+	logData = false;
 	
-  constructor(public sleepService:SleepService, private navCtrl:NavController) {
+  constructor(public sleepService:SleepService, private navCtrl:NavController, private router:Router) {
 	}
 
 	ngOnInit() {
@@ -59,7 +65,28 @@ export class HomePage {
 		this.navCtrl.navigateForward('/log-sleepiness');
 	}
 
-	prediction(event: PredictionEvent){
+	switchToPage() {
+		this.navToPage = true;
+		this.logData = false;
+	}
+
+	switchToData() {
+		this.navToPage = false;
+		this.logData = true;
+	}
+
+	navToPagePrediction(event: PredictionEvent) {
+		this.gesture = event.getPrediction();
+		if (this.gesture == 'One Open Hand and One Closed Hand') {
+			HomePage.movedToLogs = true;
+			this.router.navigate(['/tabs/logs'])
+		} else if (this.gesture == 'One Open Hand and One Pointing Hand') {
+			HomePage.movedToAnalytics = true;
+			this.router.navigate(['/tabs/analytics'])
+		}
+	}
+
+	sleepDataPrediction(event: PredictionEvent){
 		this.gesture = event.getPrediction();
 		if (this.gesture == 'Open Hand') {
 			HomePage.movedToLogSleep = true;
@@ -68,6 +95,6 @@ export class HomePage {
 			HomePage.movedToLogSleepiness = true;
 			this.navLogSleepiness();
 		}
-	  }
+	}
 
 }

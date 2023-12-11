@@ -6,8 +6,9 @@ ion-content {
     --background: #272642;
 }
 
-ion-card-header ion-card-title {
-    font-family: 'Sora', Arial, Helvetica, sans-serif;
+ion-card ion-card-header{
+    text-align: left;
+    font-family: 'Sora', Arial, Helvetica, sans-serif;  
 }
 
 ion-card-content {
@@ -42,5 +43,4 @@ ion-button{
 
 #gesture_text {
     font-family: 'Sora', Arial, Helvetica, sans-serif;
-    color: #ffffff;
   }

@@ -97,6 +97,8 @@ export class LogSleepinessPage implements OnInit {
 		this.gesture = event.getPrediction();
     if (this.gesture == "Two Closed Hands") {
       this.storeSleepinessData();
+    } else if (this.gesture == "Two Hands Pointing") {
+      this.restartLogSleepiness();
     }
 	}
 }

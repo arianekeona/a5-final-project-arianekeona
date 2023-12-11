@@ -8,21 +8,49 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-    <div id="main-elements">
-      <h1 id="current-time">{{currentTime}}</h1>
+  <ion-card>
+    <ion-card-content>
+      <div id="opening_text">Do you want to use hand tracking to navigate to a new page or log data?</div>
+      <div>
+        <ion-button color="light" size="small" (click)="switchToPage()">Navigate to New Page</ion-button>
+        <ion-button color="light" size="small" (click)="switchToData()">Log Data</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
-      <div>
-        <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
-  
-        <div id="gesture_text">Gesture: {{gesture}}</div>
-      </div>
+  <div>
+    <ion-card *ngIf="navToPage">
+      <ion-card-header>
+        <ion-card-title>Navigating to New Page</ion-card-title>
+        <ion-card-subtitle>LOGS: One Open Hand and One Closed Hand<br>
+          ANALYTICS: One Open Hand and One Pointing Hand</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <app-handtracker (onPrediction)="navToPagePrediction($any($event))"></app-handtracker>
 
-      <div>
-        <ion-button class="ion-text-wrap" (click)="navLogSleep()">Log My Sleep (Open Hand)</ion-button>
-      </div>
-      <div>
-        <ion-button class="ion-text-wrap" (click)="navLogSleepiness()">Log My Sleepiness (Closed Hand)</ion-button>
-      </div>
-    </div>
+        <div id="text">Gesture: {{gesture}}</div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="logData">
+      <ion-card-header>
+        <ion-card-title>Logging Data</ion-card-title>
+        <ion-card-subtitle>LOG SLEEP: Open Hand<br>
+          LOG SLEEPINESS: Closed Hand</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <app-handtracker (onPrediction)="sleepDataPrediction($any($event))"></app-handtracker>
+
+        <div id="text">Gesture: {{gesture}}</div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div><h1 id="current-time">{{currentTime}}</h1></div>
+
+  <div>
+    <ion-button class="ion-text-wrap" (click)="navLogSleep()">Log My Sleep</ion-button>
+    <ion-button class="ion-text-wrap" (click)="navLogSleepiness()">Log My Sleepiness</ion-button>
+  </div>
 
 </ion-content>

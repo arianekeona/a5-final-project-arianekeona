@@ -5,6 +5,7 @@ import { LogSleepinessPage } from '../log-sleepiness/log-sleepiness.page';
 import { AppStorageService } from '../services/app-storage.service';
 import { OvernightSleepData } from '../data/overnight-sleep-data';
 import { StanfordSleepinessData } from '../data/stanford-sleepiness-data';
+import { HomePage } from '../home/home.page';
 
 @Component({
   selector: 'app-logs',
@@ -23,6 +24,7 @@ export class LogsPage implements OnInit {
   }
 
   ngOnInit() {
+    HomePage.movedToLogs = false;
   }
 
   async getValue(key:string){

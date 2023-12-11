@@ -6,32 +6,34 @@
 
 ion-content {
   --background: #272642;
-}
-
-#main-elements {
   text-align: center;
   font-family: 'Sora', Arial, Helvetica, sans-serif;  
 
-  position: absolute;
   left: 0;
   right: 0;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
-#main-elements h1 {
+h1 {
   color: #ffffff;
   font-size: 36pt;
 }
 
-#main-elements div ion-button {
+#opening_text {
+  font-family: 'Sora', Arial, Helvetica, sans-serif;
+}
+
+ion-card ion-card-header{
+  text-align: left;
+  font-family: 'Sora', Arial, Helvetica, sans-serif;  
+}
+
+div ion-button {
   font-family: 'Sora', Arial, Helvetica, sans-serif;
   --background: #7d7dcb;
   max-width: 200px;
 }
 
-#gesture_text {
+#text {
   font-family: 'Sora', Arial, Helvetica, sans-serif;
-  color: #ffffff;
 }
 

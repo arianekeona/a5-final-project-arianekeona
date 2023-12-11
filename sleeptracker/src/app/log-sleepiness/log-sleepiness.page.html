@@ -42,16 +42,10 @@
       </ion-list>
 
       <div>
-        <ion-button size="small" (click)="storeSleepinessData()">Confirm (Two Closed Hands)</ion-button>
+        <ion-button size="small" (click)="storeSleepinessData()">Confirm</ion-button>
       </div>
     </ion-card-content>
   </ion-card>
-
-  <div id="handtracker_element">
-    <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
-
-    <div id="gesture_text">Gesture: {{gesture}}</div>
-  </div>
 
   <ion-card *ngIf="showSleepinessData">
     <ion-card-header>
@@ -67,4 +61,21 @@
       Log new sleepiness
     </ion-button>
   </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Log My Sleepiness</ion-card-title>
+      <ion-card-subtitle>CONFIRM: Two Closed Hands<br>
+        *LOG NEW SLEEPINESS <i>(only after logging data)</i>: Two Hand Pointing 
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="handtracker_element">
+        <app-handtracker (onPrediction)="prediction($any($event))"></app-handtracker>
+    
+        <div id="gesture_text">Gesture: {{gesture}}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
